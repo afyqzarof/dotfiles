@@ -6,12 +6,9 @@ vim.keymap.set("n", "<leader>vi", function()
   local file = vim.fn.expand("%:p")
   local ext = file:match("^.+(%..+)$")
 
-  if ext == ".png" or ext == ".jpg" or ext == ".jpeg" or ext == ".gif" then
-    vim.cmd("silent !open -a 'Arc' " .. vim.fn.shellescape(file))
-  elseif ext == ".svg" then
-    -- Open SVG specifically in Arc Browser
+  if ext == ".png" or ext == ".jpg" or ext == ".jpeg" or ext == ".gif" or ext == ".svg" then
     vim.cmd("silent !open -a 'Arc' " .. vim.fn.shellescape(file))
   else
     vim.notify("Not a supported image file (png, jpg, svg, etc)", vim.log.levels.WARN)
   end
-end, { desc = "View Image (opens Arc for SVGs)" })
+end, { desc = "View Image in Arc" })
