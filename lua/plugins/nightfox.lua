@@ -3,7 +3,7 @@ return {
   config = function()
     local palettes = {
       carbonfox = {
-        bg1 = "#151515",
+        -- bg1 = "#151515",
       },
     }
     require("nightfox").setup({
@@ -11,8 +11,8 @@ return {
       options = {
         styles = {
           comments = "italic",
-          keywords = "bold",
-          functions = "italic,bold",
+          -- keywords = "bold",
+          functions = "italic",
         },
         colorblind = {
           enable = true,
