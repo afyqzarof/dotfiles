@@ -12,7 +12,7 @@ return {
         styles = {
           comments = "italic",
           -- keywords = "bold",
-          functions = "italic",
+          -- functions = "bold",
         },
         colorblind = {
           enable = true,
