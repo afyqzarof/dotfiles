@@ -12,3 +12,15 @@ vim.keymap.set("n", "<leader>vi", function()
     vim.notify("Not a supported image file (png, jpg, svg, etc)", vim.log.levels.WARN)
   end
 end, { desc = "View Image in Arc" })
+
+vim.keymap.set("n", "<leader>r", function()
+  local ok, picker = pcall(function()
+    return require("snacks").picker.get({ source = "explorer" })[1]
+  end)
+
+  if ok and picker and picker.input and picker.input.win then
+    picker.input.win:focus()
+  else
+    require("snacks").explorer.open()
+  end
+end, { desc = "Focus or open Snacks Explorer" })
