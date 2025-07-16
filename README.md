@@ -6,18 +6,18 @@ Refer to the [documentation](https://lazyvim.github.io/installation)
 
 1. Make a backup of your current Neovim files:
 
-```
-# required
-mv ~/.config/nvim{,.bak}
+   ```bash
+   # required
+   mv ~/.config/nvim{,.bak}
 
-# optional but recommended
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}``
-```
+   # optional but recommended
+   mv ~/.local/share/nvim{,.bak}
+   mv ~/.local/state/nvim{,.bak}
+   mv ~/.cache/nvim{,.bak}``
+   ```
 
 2. Clone the starter
 
-```
-git clone git@github.com:afyqzarof/nvim-config.git ~/.config/nvim
-```
+   ```bash
+   git clone git@github.com:afyqzarof/nvim-config.git ~/.config/nvim
+   ```
