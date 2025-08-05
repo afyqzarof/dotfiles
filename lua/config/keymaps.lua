@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set("n", "<C-j>", "<C-d>", { noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-u>", { noremap = true })
 vim.keymap.set("n", "<leader>vi", function()
   local file = vim.fn.expand("%:p")
   local ext = file:match("^.+(%..+)$")
