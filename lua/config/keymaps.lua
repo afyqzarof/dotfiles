@@ -2,8 +2,26 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Remove LazyVim's default terminal keymap
+vim.keymap.del("n", "<C-/>")
+
 vim.keymap.set("n", "<C-j>", "<C-d>", { noremap = true })
 vim.keymap.set("n", "<C-k>", "<C-u>", { noremap = true })
+
+-- Remap <C-\> to open a floating terminal
+-- Define a persistent terminal instance with ID 99
+local Terminal = require("toggleterm.terminal").Terminal
+local float_term = Terminal:new({
+  direction = "float",
+  id = 99,
+  hidden = true, -- prevent from showing in terminal list
+})
+
+-- Map <C-/> to toggle the same floating terminal
+vim.keymap.set("n", "<C-/>", function()
+  float_term:toggle()
+end, { desc = "Toggle floating terminal" })
+
 vim.keymap.set("n", "<leader>vi", function()
   local file = vim.fn.expand("%:p")
   local ext = file:match("^.+(%..+)$")
