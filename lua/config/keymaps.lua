@@ -5,8 +5,8 @@
 -- Remove LazyVim's default terminal keymap
 vim.keymap.del("n", "<C-/>")
 
-vim.keymap.set("n", "<C-j>", "<C-d>", { noremap = true })
-vim.keymap.set("n", "<C-k>", "<C-u>", { noremap = true })
+vim.keymap.set("n", "<C-j>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-u>zz", { noremap = true })
 
 -- Remap <C-\> to open a floating terminal
 -- Define a persistent terminal instance with ID 99
