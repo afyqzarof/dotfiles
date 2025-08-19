@@ -1,4 +1,4 @@
-# Dotfiles
+# dotfiles
 
 My personal development environment configuration files for macOS.
 This setup uses [GNU Stow](https://www.gnu.org/software/stow/) for
@@ -47,7 +47,7 @@ dotfiles/
 1. **Install Homebrew** (macOS package manager):
 
    ```bash
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
 2. **Install required tools**:
@@ -156,4 +156,3 @@ To update configurations:
 1. Make changes to files in the dotfiles directory
 2. Changes automatically reflect in the target locations (via symlinks)
 3. Commit and push changes to maintain version control
-
