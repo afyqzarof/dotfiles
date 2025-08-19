@@ -8,6 +8,7 @@ local header = [[
 
 return {
   "folke/snacks.nvim",
+  ---@type snacks.Config
   opts = {
     explorer = {
       enabled = false,
@@ -22,6 +23,11 @@ return {
     dashboard = {
       preset = {
         header = header,
+      },
+    },
+    terminal = {
+      win = {
+        position = "float",
       },
     },
   },
