@@ -1,0 +1,52 @@
+# macOS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git files (if you don't want to stow git config)
+.git
+.gitignore
+.gitmodules
+
+# Common editor/IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Documentation files (optional)
+README.md
+README
+LICENSE
+INSTALL
+TODO
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if you have any JS tooling)
+node_modules
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+
+# Archive files
+*.zip
+*.tar.gz
+*.tar.bz2
