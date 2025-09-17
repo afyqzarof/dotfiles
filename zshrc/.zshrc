@@ -9,11 +9,11 @@ export PATH="/opt/homebrew/bin:$PATH"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-if [ ! -f ~/.last_wttr ] || [ "$(date +%Y-%m-%d)" != "$(cat ~/.last_wttr)" ]; then
-  clear
-  curl -s wttr.in
-  date +%Y-%m-%d > ~/.last_wttr
-fi
+# if [ ! -f ~/.last_wttr ] || [ "$(date +%Y-%m-%d)" != "$(cat ~/.last_wttr)" ]; then
+#   clear
+#   curl -s wttr.in
+#   date +%Y-%m-%d > ~/.last_wttr
+# fi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
