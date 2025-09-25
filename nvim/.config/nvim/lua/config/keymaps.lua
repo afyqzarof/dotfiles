@@ -1,5 +1,8 @@
 vim.keymap.set("n", "<C-j>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-k>", "<C-u>zz", { noremap = true })
+-- remap g to Q
+vim.keymap.set("n", "Q", "q")
+vim.keymap.set("n", "q", "<nop>")
 
 vim.keymap.set("n", "<leader>vi", function()
   local file = vim.fn.expand("%:p")
