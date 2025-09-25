@@ -91,6 +91,8 @@ alias cl="clear"
 alias lg="lazygit"
 alias lzs="lazysql"
 alias cd="z"
+alias csv="csvlens"
+alias wttr="curl wttr.in"
 
 # directories
 alias enjin="cd ~/repos/enjin"
