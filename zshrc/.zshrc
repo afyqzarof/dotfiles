@@ -9,15 +9,8 @@ export PATH="/opt/homebrew/bin:$PATH"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# if [ ! -f ~/.last_wttr ] || [ "$(date +%Y-%m-%d)" != "$(cat ~/.last_wttr)" ]; then
-#   clear
-#   curl -s wttr.in
-#   date +%Y-%m-%d > ~/.last_wttr
-# fi
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
+
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
@@ -142,3 +135,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias lzd='lazydocker'
+# Enable vi mode
+bindkey -v
+
+# Reduce key delay for faster mode switching
+export KEYTIMEOUT=1
+
+# Show vi mode in prompt (optional)
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'  # block cursor for command mode
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} == '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'  # beam cursor for insert mode
+  fi
+}
+zle -N zle-keymap-select
+
+# Initialize cursor shape
+echo -ne '\e[5 q'
+
+# Fix backspace in vi mode
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
