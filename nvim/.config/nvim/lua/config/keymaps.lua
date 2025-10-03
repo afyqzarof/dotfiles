@@ -4,6 +4,7 @@ vim.keymap.set("n", "<C-k>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "Q", "q")
 vim.keymap.set("n", "q", "<nop>")
 
+vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "<leader>vi", function()
   local file = vim.fn.expand("%:p")
   local ext = file:match("^.+(%..+)$")
