@@ -98,10 +98,19 @@ alias prok="cd ~/repos/enjin/enjin-proksi"
 # commands
 alias ps="pnpm start"
 alias fmt="pnpm fmt"
-alias gql="pnpm gql-generate"
 alias cicheck="pnpm ci-check"
 alias ad="pnpm advertisement-gen"
-# User configuration
+
+# smart gql switch (detects which script exists in this repo)
+gql() {
+  if pnpm run | grep -q "gql-generate"; then
+    pnpm gql-generate "$@"
+  elif pnpm run | grep -q "gql-gen"; then
+    pnpm gql-gen "$@"
+  else
+    echo "❌ no gql script found in this repo"
+  fi
+}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
