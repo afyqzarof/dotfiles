@@ -96,7 +96,7 @@ alias core="cd ~/repos/enjin/enjin-core"
 alias prok="cd ~/repos/enjin/enjin-proksi"
 
 # commands
-alias ps="pnpm start"
+alias ps="echo '=== Current Environment ===' && cat .env.local && echo '========================' && echo '' && pnpm start"
 alias fmt="pnpm fmt"
 alias cicheck="pnpm ci-check"
 alias ad="pnpm advertisement-gen"
