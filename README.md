@@ -156,3 +156,17 @@ To update configurations:
 1. Make changes to files in the dotfiles directory
 2. Changes automatically reflect in the target locations (via symlinks)
 3. Commit and push changes to maintain version control
+
+## git snippets
+
+```
+[fetch]
+ prune = true
+[alias]
+    default = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+    bclean = "!git gone | xargs -r git branch -D"
+    # Switches to specified branch (or the default branch if no branch is specified), runs git up, then runs bclean.
+    bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean; }; f"
+    gone = "!git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads/ | awk '$2 == \"[gone]\" { print $1 }'"
+
+```
