@@ -37,6 +37,7 @@ alias wttr="curl wttr.in"
 alias lzd="lazydocker"
 alias python3="/opt/homebrew/bin/python3.12"
 alias python="/opt/homebrew/bin/python3.12"
+alias gl='git pull && git bclean'
 
 # Work directories
 alias enjin="cd ~/repos/enjin"
