@@ -79,3 +79,6 @@ gql() {
     echo "❌ no gql script found in this repo"
   fi
 }
+
+# Created by `pipx` on 2026-02-04 02:42:58
+export PATH="$PATH:/Users/afyq/.local/bin"
