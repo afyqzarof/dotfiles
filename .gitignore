@@ -8,3 +8,4 @@ foo.*
 data
 .DS_Store
 tmux/.config/tmux/plugins/**
+lazy-lock.json
