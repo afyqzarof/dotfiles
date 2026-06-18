@@ -20,9 +20,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Zoxide
-eval "$(zoxide init zsh)"
-
 # Aliases
 alias gap="git add -p"
 alias gs="git status"
@@ -82,3 +79,6 @@ gql() {
 
 # Created by `pipx` on 2026-02-04 02:42:58
 export PATH="$PATH:/Users/afyq/.local/bin"
+
+# Zoxide
+eval "$(zoxide init zsh)"
