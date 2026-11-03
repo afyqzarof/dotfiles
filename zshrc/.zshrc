@@ -37,18 +37,13 @@ alias python="/opt/homebrew/bin/python3.12"
 alias gl='git pull && git bclean'
 
 # Work directories
-alias enjin="cd ~/repos/enjin"
-alias pl="cd ~/repos/enjin/enjin-pelanggan"
-alias kn="cd ~/repos/enjin/enjin-konsol"
-alias wf="cd ~/repos/enjin/enjin-workflow"
-alias core="cd ~/repos/enjin/enjin-core"
-alias prok="cd ~/repos/enjin/enjin-proksi"
-
-# Development commands
-alias ps="echo '=== Current Environment ===' && cat .env.local && echo '========================' && echo '' && pnpm start"
-alias fmt="pnpm fmt"
-alias cicheck="pnpm ci-check"
-alias ad="pnpm advertisement-gen"
+alias arrow="cd ~/repos/arrow"
+alias arq="cd ~/repos/arrow/apps/arq"
+alias be="cd ~/repos/arrow/apps/backend"
+alias fe="cd ~/repos/arrow/apps/frontend"
+alias rae="cd ~/repos/arrow/apps/rae"
+alias vec="cd ~/repos/arrow/apps/vector"
+alias biz="cd ~/repos/arrow/apps/business"
 
 # Vi mode
 bindkey -v
@@ -65,17 +60,6 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 echo -ne '\e[5 q'
-
-# Functions
-gql() {
-  if pnpm run | grep -q "gql-generate"; then
-    pnpm gql-generate "$@"
-  elif pnpm run | grep -q "gql-gen"; then
-    pnpm gql-gen "$@"
-  else
-    echo "❌ no gql script found in this repo"
-  fi
-}
 
 # Created by `pipx` on 2026-02-04 02:42:58
 export PATH="$PATH:/Users/afyq/.local/bin"
