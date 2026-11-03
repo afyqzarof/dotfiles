@@ -1,9 +1,9 @@
 # dotfiles
 
 My personal development environment configuration files for macOS.
-This setup uses [GNU Stow](https://www.gnu.org/software/stow/) for
-symlink management and provides configurations for terminal, editor,
-and development tools.
+Files live at their real paths in `$HOME` and are tracked with a
+[bare git repository](https://www.atlassian.com/git/tutorials/dotfiles)
+in `~/.cfg`, so there are no symlinks and no extra tools.
 
 ## 🔧 Technologies & Tools
 
@@ -31,13 +31,17 @@ and development tools.
 
 ## 📁 Structure
 
+Paths in the repo mirror `$HOME`:
+
 ```
-dotfiles/
-├── ghostty/          # Ghostty terminal configuration
-├── nvim/             # Neovim configuration (LazyVim)
-├── tmux/             # tmux configuration with plugins
-├── zshrc/            # Zsh shell configuration
-└── .stow-local-ignore # Stow ignore patterns
+~
+├── .zshrc               # Zsh shell configuration
+├── .gitignore           # Ignores for the dotfiles repo
+├── .github/README.md    # This file
+└── .config/
+    ├── ghostty/         # Ghostty terminal configuration
+    ├── nvim/            # Neovim configuration (LazyVim)
+    └── tmux/            # tmux configuration
 ```
 
 ## 🚀 Installation
@@ -53,7 +57,7 @@ dotfiles/
 2. **Install required tools**:
 
    ```bash
-   brew install stow zsh tmux neovim ghostty lazygit zoxide
+   brew install zsh tmux neovim ghostty lazygit zoxide
    ```
 
 3. **Install Oh My Zsh**:
@@ -70,18 +74,31 @@ dotfiles/
 
 ### Setup Dotfiles
 
-1. **Clone this repository**:
+1. **Clone as a bare repository and check it out into `$HOME`**:
 
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
-   cd ~/dotfiles
+   git clone --bare git@github.com:afyqzarof/dotfiles.git "$HOME/.cfg"
+   alias config='git --git-dir=$HOME/.cfg --work-tree=$HOME'
+   config checkout
+   config config --local status.showUntrackedFiles no
    ```
 
-2. **Stow configurations** (creates symlinks):
+   If `checkout` fails because files already exist (e.g. a default
+   `.zshrc`), move them aside and retry:
 
    ```bash
-   stow ghostty nvim tmux zshrc
+   mkdir -p ~/.config-backup
+   config checkout 2>&1 | grep -E '^\s+' | awk '{print $1}' |
+     xargs -I{} sh -c 'mkdir -p ~/.config-backup/$(dirname {}) && mv ~/{} ~/.config-backup/{}'
+   config checkout
    ```
+
+   **Migrating a machine that used the old stow layout**: remove the
+   stow symlinks first (`rm ~/.zshrc ~/.config/{nvim,tmux,ghostty}`),
+   then run the steps above. Copy over `lazy-lock.json` from the old
+   `~/dotfiles/nvim/.config/nvim/` if you want to keep plugin versions.
+
+2. **Open a new shell** so the `config` alias from `.zshrc` is loaded.
 
 3. **Install tmux plugins** (after starting tmux):
 
@@ -129,9 +146,16 @@ dotfiles/
 
 ### Adding New Configurations
 
-1. Create a new directory in the dotfiles root
-2. Add your config files maintaining the target directory structure
-3. Run `stow <directory-name>` to create symlinks
+Use `config` exactly like `git`, from anywhere:
+
+```bash
+config add ~/.config/lazygit/config.yml
+config commit -m "feat(lazygit): add config"
+config push
+```
+
+Untracked files in `$HOME` are hidden from `config status`, so only
+files you explicitly `config add` are tracked.
 
 ### Project-Specific Aliases
 
@@ -145,7 +169,7 @@ alias myproject="cd ~/repos/myproject"
 
 - This setup is optimized for macOS development
 - Requires Homebrew for package management
-- Uses Stow for clean symlink management
+- Uses a bare git repo in `~/.cfg` instead of symlinks
 - LazyVim provides a modern Neovim experience out of the box
 - All configurations are version controlled for easy backup/restore
 
@@ -153,9 +177,9 @@ alias myproject="cd ~/repos/myproject"
 
 To update configurations:
 
-1. Make changes to files in the dotfiles directory
-2. Changes automatically reflect in the target locations (via symlinks)
-3. Commit and push changes to maintain version control
+1. Edit files in place (e.g. `~/.config/nvim/...`)
+2. Review with `config status` / `config diff`
+3. Commit and push with `config commit` / `config push`
 
 ## git snippets
 

@@ -35,6 +35,7 @@ alias lzd="lazydocker"
 alias python3="/opt/homebrew/bin/python3.12"
 alias python="/opt/homebrew/bin/python3.12"
 alias gl='git pull && git bclean'
+alias config="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 # Work directories
 alias arrow="cd ~/repos/arrow"
